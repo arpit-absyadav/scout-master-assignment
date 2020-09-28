@@ -8,7 +8,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "format": "prettier --write  \"src/**/*.js\"",
-    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles --forceExit ",
+    "test": "NODE_ENV=test jest --coverage --runInBand --detectOpenHandles --forceExit ",
     "coverage": "xdg-open coverage/index.html"
   },
   "repository": {

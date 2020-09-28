@@ -8,7 +8,7 @@ const sequelize = new Sequelize(env.MYSQL_DB_NAME, env.MYSQL_USERNAME, env.MYSQL
   host: env.MYSQL_HOST,
   port: env.MYSQL_PORT,
   dialect: 'mysql',
-  logging: false,
+  logging: console.log,
   dialectOptions: {
     charset: 'utf8mb4',
     multipleStatements: true,
@@ -27,8 +27,8 @@ const User = user(sequelize, Sequelize);
 const Package = packages(sequelize, Sequelize);
 const Company = company(sequelize, Sequelize);
 
-Package.hasOne(Company);
-Package.hasOne(User);
+// Package.hasOne(Company);
+// Package.hasOne(User);
 
 module.exports = {
   sequelize,

@@ -13,9 +13,11 @@ app.get('/', (req, res) => {
  * @NOTE If Environment is not `production`,
  * server will run on http with `3000` port.
  */
-app.listen(config.APP_PORT, config.APP_HOST, () => {
-  console.log(`Server running on : http://${config.APP_HOST}:${config.APP_PORT}`);
-  console.log(`Time : ${new Date()}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(config.APP_PORT, config.APP_HOST, () => {
+    console.log(`Server running on : http://${config.APP_HOST}:${config.APP_PORT}`);
+    console.log(`Time : ${new Date()}`);
+  });
+}
 
 module.exports = app;

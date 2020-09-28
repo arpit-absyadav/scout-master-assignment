@@ -1,29 +1,29 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
+// const chai = require('chai');
+// const chaiHttp = require('chai-http');
 const { expect } = require('chai');
-const server = require('../../../../server');
-const { Package } = require('../../../../config/database/sequelize');
+// const server = require('../../../../server');
+// const { Package } = require('../../../../config/database/sequelize');
 
-chai.use(chaiHttp);
+// chai.use(chaiHttp);
 
-const baseUrl = '/packages';
+// const baseUrl = '/packages';
 
-function randomString(length) {
-  let text = '';
-  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-}
+// function randomString(length) {
+//   let text = '';
+//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+//   // eslint-disable-next-line no-plusplus
+//   for (let i = 0; i < length; i++) {
+//     text += possible.charAt(Math.floor(Math.random() * possible.length));
+//   }
+//   return text;
+// }
 
-const getOne = async ({ status }) => Package.findOne({ where: { status } });
+// const getOne = async ({ status }) => Package.findOne({ where: { status } });
 
-const maxId = async () => Package.max('id');
+// const maxId = async () => Package.max('id');
 
 it('', () => {
-  // expect(true).toEqual(true);s
+  expect(201).to.equal(201);
 });
 // describe('User Test Suit', async () => {
 // describe(`POST ${baseUrl}`, () => {

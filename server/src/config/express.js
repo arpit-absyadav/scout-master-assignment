@@ -3,14 +3,14 @@ const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
+const responseHandler = require('@abslibs/response-handler');
 const {
   handlers: { errorHandler },
 } = require('../app/common');
 
 module.exports = function () {
   const app = express();
-
+  app.use(responseHandler());
   app.use(
     bodyParser.urlencoded({
       extended: true,
@@ -30,8 +30,10 @@ module.exports = function () {
   });
 
   const userRoutes = require('../app/modules/users/user.routes');
+  const comppanyRoutes = require('../app/modules/companies/company.routes');
 
   app.use('/users', userRoutes);
+  app.use('/companies', comppanyRoutes);
   // route-declare
 
   app.use(errorHandler.handler);

@@ -1,4 +1,5 @@
-const handler = (err, req, res) => {
+// eslint-disable-next-line no-unused-vars
+const handler = (err, req, res, next) => {
   console.error(`Error  ::::  ${err}`);
 
   switch (err.name) {
