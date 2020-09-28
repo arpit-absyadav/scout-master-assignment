@@ -1,0 +1,57 @@
+{
+  "name": "service",
+  "version": "1.0.0",
+  "description": "Node server",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
+    "format": "prettier --write  \"src/**/*.js\"",
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles --forceExit ",
+    "coverage": "xdg-open coverage/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com:feelinghungry/server.git"
+  },
+  "keywords": [
+    "Node Server",
+    "Express Server",
+    ""
+  ],
+  "author": "Arpit Yadav <arpit.absyadav@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com:feelinghungry/server/issues"
+  },
+  "homepage": "https://gitlab.com:feelinghungry/server#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "git fetch && git status -sb && npm audit && npm run lint",
+      "post-commit": "npm --no-git-tag-version version patch"
+    }
+  },
+  "dependencies": {
+    "@abslibs/response-handler": "^1.0.0",
+    "@hapi/joi": "^15.1.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.2"
+  }
+}
