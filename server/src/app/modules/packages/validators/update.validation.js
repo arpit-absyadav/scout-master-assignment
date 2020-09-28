@@ -1,9 +1,7 @@
 const Joi = require('@hapi/joi');
 
 module.exports = Joi.object().keys({
-  order_number: Joi.number()
-    .min(3)
-    .max(100),
+  order_number: Joi.number(),
   delivery_company_id: Joi.number().positive(),
   awb: Joi.string()
     .label('AWB'),

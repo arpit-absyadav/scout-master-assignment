@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PacakgeListComponent } from './pacakge-list/pacakge-list.component';
+import { EditPackageComponent } from './edit-package/edit-package.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PacakgeListComponent
+    PacakgeListComponent,
+    EditPackageComponent
   ],
   imports: [
     BrowserModule,

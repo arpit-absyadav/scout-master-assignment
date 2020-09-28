@@ -11,6 +11,7 @@
         <th>Value</th>
         <th>Delivery Comp</th>
         <th>Created At</th>
+        <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -23,6 +24,7 @@
         <td>{{ package.value }}</td>
         <td>{{ package.delivery_company_id }}</td>
         <td>{{ package.created_at | date: "medium" }}</td>
+        <td><button type="button" class="btn btn-primary" (click)="editPackage(package.id)">Edit</button></td>
         <td><button type="button" class="btn btn-danger" (click)="deletePackage(package.id)">Del</button></td>
       </tr>
     </tbody>

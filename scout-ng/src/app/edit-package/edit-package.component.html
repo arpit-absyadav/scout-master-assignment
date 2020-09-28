@@ -1,0 +1,102 @@
+<div class="container">
+  <form [formGroup]=packageForm (ngSubmit)="updatePackage()" class="form-horizontal">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Order No:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="order" placeholder="Order Number" formControlName="order_number">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">AWB:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="awb" placeholder="AWB" formControlName="awb">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Weight:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="weight" placeholder="weight" formControlName="weight">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Value:</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" id="value" placeholder="value" formControlName="value">
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label class="col-sm-2" for="sel1">Company:</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="sel1" formControlName="delivery_company_id">
+          <option *ngFor="let company of companies" value={{company.id}}>{{company.name}}</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2" for="sel1">Return Processed By:</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="sel1" formControlName="return_processed_by">
+          <option *ngFor="let user of users" value={{user.id}}>{{user.name}}</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-sm-2" for="sel1">Created By:</label>
+      <div class="col-sm-10">
+        <select class="form-control" id="sel1" formControlName="created_by">
+          <option *ngFor="let user of users" value={{user.id}}>{{user.name}}</option>
+
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Rejected:</label>
+      <div class="col-sm-10">
+        <input type="checkbox" formControlName="rejected" id="acceptTerms" class="form-check-input" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Lost Shipment:</label>
+      <div class="col-sm-10">
+        <input type="checkbox" formControlName="rejected" id="shipment_lost" class="form-check-input" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Returned other reason :</label>
+      <div class="col-sm-10">
+        <input type="checkbox" formControlName="rejected" id="returned_other_reason" class="form-check-input" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Deliverd At:</label>
+      <div class="col-sm-10">
+        <input type="datetime-local" class="form-control" id="delivered_at" placeholder="delivered_at"
+          formControlName="delivered_at">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">dispatched At:</label>
+      <div class="col-sm-10">
+        <input type="datetime-local" class="form-control" id="dispatched_at" placeholder="Dispactched At"
+          formControlName="dispatched_at">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Update</button> &nbsp;
+        <button type="button" class="btn btn-default" [routerLink]="['/']">Back</button>
+      </div>
+
+    </div>
+  </form>
+</div>

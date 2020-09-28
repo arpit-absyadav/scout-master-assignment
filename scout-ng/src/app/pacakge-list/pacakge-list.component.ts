@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { PackageService } from '../services/package.service';
 
 @Component({
@@ -15,8 +16,13 @@ export class PacakgeListComponent implements OnInit {
   submitted = false;
   constructor(
     private service: PackageService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
+
+  editPackage(id) {
+    this.router.navigate(['/edit', id]);
+  }
 
   createPackage() {
     console.log(this.packageForm.value);
