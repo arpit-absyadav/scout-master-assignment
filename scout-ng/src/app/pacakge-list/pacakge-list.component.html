@@ -10,6 +10,11 @@
         <th>Weight</th>
         <th>Value</th>
         <th>Delivery Comp</th>
+        <th>Rejected</th>
+        <th>Shipment Lost</th>
+        <th>Returned Other Reason</th>
+        <th>DispatchedAt</th>
+        <th>DeliveredAt</th>
         <th>Created At</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -23,6 +28,11 @@
         <td>{{ package.weight }}</td>
         <td>{{ package.value }}</td>
         <td>{{ package.delivery_company_id }}</td>
+        <td>{{ package.rejected }}</td>
+        <td>{{ package.shipment_lost }}</td>
+        <td>{{ package.returned_other_reason }}</td>
+        <td>{{ package.dispatched_at }}</td>
+        <td>{{ package.delivered_at }}</td>
         <td>{{ package.created_at | date: "medium" }}</td>
         <td><button type="button" class="btn btn-primary" (click)="editPackage(package.id)">Edit</button></td>
         <td><button type="button" class="btn btn-danger" (click)="deletePackage(package.id)">Del</button></td>

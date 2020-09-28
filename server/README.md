@@ -1,13 +1,8 @@
-# MySql NodeJs Boilerplate
+# MySql NodeJs
 
 ## commands
 
-```bash
-> `npm run test`  #testing.
+- STEP 1 : Run db/init.sql
+- STEP 2 : npm run start
 
-> `npm run coverage` #to open coverage in html (change `xdg-open` to `open` for mac).
-
-> `npm run docs:build` #build documentation.
-
-> `npm run docs:open` #open documentation. (change `xdg-open` to `open` for mac)
-```
+NOTE : Angular environment must be changed as per the server port changes.
