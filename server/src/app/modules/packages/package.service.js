@@ -163,11 +163,6 @@ const deletePackage = async ({ id }) => {
 
     id,
   });
-
-  if (item.status === STATUS.ENABLED) {
-    return throwPreconditionFailed('Enabled package can\'t be deleted');
-  }
-
   return item.destroy();
 };
 

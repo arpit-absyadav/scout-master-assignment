@@ -1,0 +1,92 @@
+<div class="container">
+  <h2>Package List</h2>
+  <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Add Pacakge</button>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Order No</th>
+        <th>AWB</th>
+        <th>Weight</th>
+        <th>Value</th>
+        <th>Delivery Comp</th>
+        <th>Created At</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let package of packages">
+      <tr>
+        <td>#{{ package.id }}</td>
+        <td>{{ package.order_number }}</td>
+        <td>{{ package.awb }}</td>
+        <td>{{ package.weight }}</td>
+        <td>{{ package.value }}</td>
+        <td>{{ package.delivery_company_id }}</td>
+        <td>{{ package.created_at | date: "medium" }}</td>
+        <td><button type="button" class="btn btn-danger" (click)="deletePackage(package.id)">Del</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Package</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]=packageForm (ngSubmit)="createPackage()" class="form-horizontal">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Order No:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="order" placeholder="Order Number"
+                formControlName="order_number">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">AWB:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="awb" placeholder="AWB" formControlName="awb">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Weight:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="weight" placeholder="weight" formControlName="weight">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="pwd">Value:</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="value" placeholder="value" formControlName="value">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2" for="sel1">Company:</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="sel1" formControlName="delivery_company_id">
+                <option *ngFor="let company of companies" value={{company.id}}>{{company.name}}</option>
+
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button> &nbsp;
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</div>

@@ -9,7 +9,7 @@ const Joi = require('@hapi/joi');
 module.exports = Joi.object().keys({
   order_number: Joi.number().positive().required(),
   delivery_company_id: Joi.number().positive().required(),
-  awb: Joi.string().min(10).max(10).required()
+  awb: Joi.string().required()
     .label('AWB'),
   weight: Joi.number().required().label('Weight'),
   value: Joi.number().required(),

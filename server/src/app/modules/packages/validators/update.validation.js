@@ -5,7 +5,7 @@ module.exports = Joi.object().keys({
     .min(3)
     .max(100),
   delivery_company_id: Joi.number().positive(),
-  awb: Joi.string().min(10).max(10)
+  awb: Joi.string()
     .label('AWB'),
   weight: Joi.number().label('Weight'),
   value: Joi.number(),
