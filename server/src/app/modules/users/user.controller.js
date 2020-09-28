@@ -16,7 +16,6 @@ exports.getList = async (req, res, next) => {
 
     res.error.NotFound('User Data not found.');
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };

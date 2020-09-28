@@ -1,4 +1,4 @@
-const User = require('./package.service');
+const PackageService = require('./package.service');
 const {
   handlers: { errorHandler },
   validations: { listValidation, idValidation, statusValidation },
@@ -10,22 +10,21 @@ const {
 } = require('./validators');
 
 /**
- * Create User fn: `Creating user. `
- * @description `req.body will have user data.`
+ * Create Package fn: `Creating package. `
+ * @description `req.body will have package data.`
  */
 exports.create = async (req, res, next) => {
   try {
     await addValidation.validate(req.body);
-    const user = await User.addUser({ ...req.body, });
-    res.success.Created('Successfully Created', { user });
+    const packageData = await PackageService.addPackage({ ...req.body });
+    res.success.Created('Successfully Created', { package: packageData });
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };
 
 /**
- * Get User Data Fn: ` Get User Data`
+ * Get Package Data Fn: ` Get Package Data`
  * @description `req.body will have _id `
  * @summary this function will get the data having same `_id` .
  * @reference service
@@ -34,21 +33,20 @@ exports.getOne = async (req, res, next) => {
   const { packageId } = req.params;
   try {
     const id = await idValidation.validate(packageId);
-    const user = await User.getUser({ id, });
+    const packageData = await PackageService.getPackage({ id });
 
-    if (user) {
-      res.success.OK('Successfully got User.', { user });
+    if (packageData) {
+      res.success.OK('Successfully got PackageService.', { package: packageData });
     }
 
-    res.error.NotFound('User Data not found.');
+    res.error.NotFound('Package Data not found.');
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };
 
 /**
- * Get User Data Fn: ` Get User Data`
+ * Get Package Data Fn: ` Get Package Data`
  * @description `req.query will have query `
  * @summary this function will get the data having same `query` .
  * @reference service
@@ -57,21 +55,20 @@ exports.getList = async (req, res, next) => {
   const reqData = { ...req.query };
   try {
     const validatedReqData = await listValidation.validate(reqData);
-    const users = await User.getUserList({ ...validatedReqData, });
+    const packages = await PackageService.getPackageList({ ...validatedReqData });
 
-    if (users) {
-      res.success.OK('Successfully got User.', { users });
+    if (packages) {
+      res.success.OK('Successfully got PackageService.', { packages });
     }
 
-    res.error.NotFound('User Data not found.');
+    res.error.NotFound('Package Data not found.');
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };
 
 /**
- * Get User Data Fn: ` Get User Data Count`
+ * Get Package Data Fn: ` Get Package Data Count`
  * @description `req.query will have query `
  * @summary this function will get the data having same `query` .
  * @reference service
@@ -81,7 +78,7 @@ exports.getCount = async (req, res, next) => {
   try {
     const validatedReqData = await listValidation.validate(reqData);
 
-    const count = await User.getUserListCount({ ...validatedReqData, });
+    const count = await PackageService.getPackageListCount({ ...validatedReqData });
 
     if (count) {
       res.success.OK('Count.', { count });
@@ -89,7 +86,6 @@ exports.getCount = async (req, res, next) => {
 
     res.success.OK('Count.', { count: 0 });
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };
@@ -102,17 +98,15 @@ exports.update = async (req, res, next) => {
     const validatedBody = enable === 'true' || enable === 'false'
       ? await statusValidation.validate({ enable }) : await updateValidation.validate(req.body);
 
-    const user = await User.updateUser({
+    const packageData = await PackageService.updatePackage({
       id,
-      ,
       ...validatedBody,
     });
 
-  res.success.OK('Successfully Updated User.', { user });
-} catch (error) {
-  console.error(error);
-  return errorHandler.handler(error, req, res, next);
-}
+    res.success.OK('Successfully Updated PackageService.', { package: packageData });
+  } catch (error) {
+    return errorHandler.handler(error, req, res, next);
+  }
 };
 
 exports.delete = async (req, res, next) => {
@@ -120,15 +114,14 @@ exports.delete = async (req, res, next) => {
   try {
     const id = await idValidation.validate(packageId);
 
-    const user = await User.deleteUser({ id, });
+    const packageData = await PackageService.deletePackage({ id });
 
-    if (!user) {
+    if (!packageData) {
       res.error.PreconditionFailed('Something Went Wrong.');
     }
 
-    res.success.OK('Successfully Deleted.', { user });
+    res.success.OK('Successfully Deleted.', { package: packageData });
   } catch (error) {
-    console.error(error);
     return errorHandler.handler(error, req, res, next);
   }
 };

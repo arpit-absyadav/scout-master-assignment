@@ -41,6 +41,10 @@ module.exports = (sequelize, Sequelize) => sequelize.define('packages', {
     allowNull: false,
     defaultValue: 0,
   },
+  return_processed_by: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
   dispatched_at: {
     type: Sequelize.DATE,
     allowNull: true,
@@ -50,10 +54,6 @@ module.exports = (sequelize, Sequelize) => sequelize.define('packages', {
     allowNull: true,
   },
   created_by: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-  },
-  return_processed_by: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },

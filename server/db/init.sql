@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `packages` (
   `delivered_at` DATETIME  DEFAULT NULL ,
   `return_recieved_at` DATETIME DEFAULT NULL,
   `created_by` INT NOT NULL,
-  `return_processed_by` INT NOT NULL,
+  `return_processed_by` INT DEFAULT NULL,
   `status` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '0 = Incomplete, 1 = Active, 2 = Inactive',
   `deleted` INT(11) NOT NULL DEFAULT 0 COMMENT '0 = False, >=1 = True',
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -53,7 +53,6 @@ CREATE TABLE IF NOT EXISTS `packages` (
   `deleted_at` DATETIME DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY (`created_by`),
-  KEY (`return_processed_by`),
   UNIQUE KEY `packages_uk` (`awb`, `deleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 

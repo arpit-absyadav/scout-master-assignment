@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 const handler = (err, req, res, next) => {
-  console.error(`Error  ::::  ${err}`);
+  // console.error(`Error  ::::  ${err}`);
 
   switch (err.name) {
     case 'SyntaxError':

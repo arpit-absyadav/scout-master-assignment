@@ -41,25 +41,15 @@ describe(`GET ${baseUrl}/`, () => {
   });
 
   it('should give UnProcessableEntity error because page_no can not be a garbage value.', async () => {
-    const res = await chai
-      .request(server)
+    const res = await chai.request(server)
       .get(`${baseUrl}?page_no=@#78sdac`);
 
     expect(res.status).to.equal(400);
   });
 
   it('should give UnProcessableEntity error because page_no can not be a string.', async () => {
-    const res = await chai
-      .request(server)
+    const res = await chai.request(server)
       .get(`${baseUrl}?page_no=abc`);
-
-    expect(res.status).to.equal(400);
-  });
-
-  it('should give UnProcessableEntity error because duplicate parameters are not allowed.', async () => {
-    const res = await chai
-      .request(server)
-      .get(`${baseUrl}?sort_by=_id&page_no=1&sort_by=_id`);
 
     expect(res.status).to.equal(400);
   });

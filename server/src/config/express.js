@@ -30,10 +30,12 @@ module.exports = function () {
   });
 
   const userRoutes = require('../app/modules/users/user.routes');
-  const comppanyRoutes = require('../app/modules/companies/company.routes');
+  const companyRoutes = require('../app/modules/companies/company.routes');
+  const packageRoutes = require('../app/modules/packages/package.routes');
 
   app.use('/users', userRoutes);
-  app.use('/companies', comppanyRoutes);
+  app.use('/companies', companyRoutes);
+  app.use('/packages', packageRoutes);
   // route-declare
 
   app.use(errorHandler.handler);
